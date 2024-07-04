@@ -1,0 +1,49 @@
+<!-- FILL ME IN WITH CODE FOR YOUR PAGE LAYOUT -->
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PlanIT</title>
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/navbar.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/layout.css') }}">
+  {% block extracss %}{% endblock %}
+
+  {% block extrajs %}{% endblock %}
+</head>
+
+<body>
+    <article>
+    <!-- The header  -->
+    <header>
+     
+    </header>
+    <!-- The navigation bar -->
+    <nav><!-- navbar -->
+      <p>Welcome {{user}}</p>
+      <a href="/logout">PlanIT</a>
+      <a href="/boards">Boards</a>
+      <a id="login" href="/logout" >Logout</a>      
+  </nav>
+   
+    </article>
+    <!-- The main content  -->
+    {% block maincontent %}{% endblock %}
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

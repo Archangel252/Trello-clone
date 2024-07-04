@@ -1,0 +1,23 @@
+/* boards.css */
+.boards_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+}
+
+.buttons {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 1em;
+}
+
+.buttons:hover {
+    background-color: #357ae8;
+}
+
+

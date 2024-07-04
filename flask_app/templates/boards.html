@@ -1,0 +1,17 @@
+<!--page for a list of boards-->
+{% extends 'shared/layout.html' %}
+{% block extracss %}
+<link rel="stylesheet"    href="{{ url_for('static', filename='main/css/boards.css') }}">
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='main/js/boards.js') }}" defer></script>
+{% endblock %}
+{% block maincontent %}
+<div class="boards_list">
+    {% for board in boards%}
+    <button class="buttons" onclick=selectBoard({{ board[0] }})>{{ board[1] }}</button>
+    {% endfor%}
+</div>
+{% endblock %}

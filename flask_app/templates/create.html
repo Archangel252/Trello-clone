@@ -1,0 +1,25 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='main/css/create.css') }}">
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script src="{{ url_for('static', filename='main/js/create.js') }}" defer></script>
+{% endblock %}
+{% block maincontent %}
+<div class="inputs">
+    <div class="name">       
+        <label>Select Board Name</label><br>
+        <input id="name" required placeholder="Enter Name">
+    </div>
+    
+    <div class="members">
+        <label>Add Member Email:</label><br>
+        <input id="email" required placeholder="Enter email">
+        <button>Add Member</button>
+    </div>
+    <button id="done">Create board</button>
+</div>
+{% endblock %}

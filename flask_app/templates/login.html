@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='main/js/login.js') }}" defer></script>
+    <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/login.css') }}">
+</head>
+<body>
+    <div class="content">
+        {% if issignup == True %}
+        <h1>Signup</h1>
+        {% else %}
+        <h1>Login</h1>
+        {% endif %}
+        <div class="inputs">
+        <input type="text" id="loginEmail" name="loginEmail" placeholder="Enter Email">
+        <input type="text" id="loginPassword" name="loginPassword" placeholder="Enter Password">
+        </div>
+        <div id="count" style="color:red"><p>
+        </div>
+        {% if issignup == True %}
+        <button id="signin" onclick="createUser()">Sign Up</button>
+        {% else %}
+        <button id="login" onclick="checkCredentials()">Login</button>
+        {% endif %}
+        
+        {% if issignup == True %}
+        <a href="/login">Already have an account? Login in Here</a>
+        {% else %}
+        <a href="/signup">Don't have an account? Sign up Here</a>
+        {% endif %}
+        
+</body>
+</html>

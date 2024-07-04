@@ -1,0 +1,64 @@
+{% extends 'shared/layout.html' %}
+{% block extracss %}
+<link rel="stylesheet"    href="{{ url_for('static', filename='main/css/home.css') }}">
+<link rel="stylesheet"    href="{{ url_for('static', filename='main/css/chat.css') }}">
+{% endblock %}
+{% block extrajs %}
+<script type="text/javascript">
+    // must be done in html file to use jninja
+    var board_id = {{b_id}};
+</script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script src="https://cdn.socket.io/3.1.1/socket.io.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+<script src="{{ url_for('static', filename='main/js/home.js') }}" defer></script>
+{% endblock %}
+{% block maincontent %}
+<div class="main">
+    <div class="board">
+        {% for name, content in board.items() %}
+    <h1 id="board-name">{{name}}</h1>
+    <div class="lists">        
+        {% for list_id, list in content.items() %}
+        <div class="column">
+            <div class="list" id="list-{{ list_id }}">
+           
+                <h3>{{list['name']}}</h3>
+                {% for card_id, card in list['cards'].items() %}
+                {% if card['list_id'] == list['list_id'] %}
+                <div class="card" id="card-{{ card_id }}">
+                    <p id="content-card-{{ card_id }}">{{card['content']}}</p>
+                    <div class="button-container" id="buttons-{{ card_id }}">
+                        <button onclick=editCard({{ card_id }})>EDIT</button>
+                        <button onclick=delCard({{card_id}})>DELETE</button>
+                    </div>
+                    
+                </div>
+                
+                {% else %}
+                {% endif %}
+                {% endfor %}    
+            </div>
+            <button onclick=addCard({{list_id}})>ADD CARD</button>
+
+        </div>
+        
+        {% endfor %}    
+    </div>
+    {% endfor %}
+    </div>
+    <div class="chat">
+        <div class="content">
+            <h1>Chat</h1>
+            <div id='chat' contenteditable>    
+            </div>
+            <p class="email">
+            <textarea id='chatInput' placeholder="Enter Your Message Here" ></textarea>
+            </p>
+            <button id="leave" onclick="LeaveChat()">Leave Chat</button>
+            </div>
+    </div>
+    
+    
+</div>
+{% endblock %}
